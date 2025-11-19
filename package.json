@@ -1,7 +1,7 @@
 {
   "name": "czn-calculator",
   "private": true,
-  "homepage": "https://rayyre.github.io/czn-calculator",
+  "homepage": "https://rayyre.github.io/CZNSaveDataCalculator/",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
