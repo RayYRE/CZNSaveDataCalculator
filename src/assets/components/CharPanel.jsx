@@ -34,7 +34,7 @@ export default function CharPanel({values, onIncrement, onDecrement}) {
       return 0;
     }
     
-    return copyCalc(num) + 20;
+    return copyCalc(num) + 20 * num;
   }
   
   return (
