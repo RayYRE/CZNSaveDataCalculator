@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import CharPanel from "./assets/components/CharPanel"; 
+import TierBox from './assets/components/TierBox';
 
 /*
     CZN Calculator by Ray Ern
@@ -15,9 +16,10 @@ import CharPanel from "./assets/components/CharPanel";
 */
 
 function App() {
-  const [char1_values, setChar1Values] = useState(Array(11).fill(0));
-  const [char2_values, setChar2Values] = useState(Array(11).fill(0));
-  const [char3_values, setChar3Values] = useState(Array(11).fill(0));
+  const [char1_values, setChar1Values] = useState(Array(10).fill(0));
+  const [char2_values, setChar2Values] = useState(Array(10).fill(0));
+  const [char3_values, setChar3Values] = useState(Array(10).fill(0));
+  const [tier, setTier] = useState(1);
 
   const P1 = 1;
   const P2 = 2;
@@ -73,21 +75,34 @@ function App() {
   return (
     <body>
       <h1>CZN Save Data Calculator</h1>
-      <CharPanel
-        values={char1_values}
-        onIncrement={(row) => increment(P1, row)}
-        onDecrement={(row) => decrement(P1, row)}
-      />
-      <CharPanel
-        values={char2_values}
-        onIncrement={(row) => increment(P2, row)}
-        onDecrement={(row) => decrement(P2, row)}
-      />
-      <CharPanel
-        values={char3_values}
-        onIncrement={(row) => increment(P3, row)}
-        onDecrement={(row) => decrement(P3, row)}
-      />
+      <div class="panelcontainer">
+        <TierBox
+          current_tier={tier}
+          onIncrement={() => setTier(tier + 1)}
+          onDecrement={(row) => setTier(tier - 1)}/>
+      </div>
+      <div class="panelcontainer">
+        
+        <CharPanel
+          values={char1_values}
+          current_tier={tier}
+          onIncrement={(row) => increment(P1, row)}
+          onDecrement={(row) => decrement(P1, row)}
+        />
+        <CharPanel
+          values={char2_values}
+          current_tier={tier}
+          onIncrement={(row) => increment(P2, row)}
+          onDecrement={(row) => decrement(P2, row)}
+        />
+        <CharPanel
+          values={char3_values}
+          current_tier={tier}
+          onIncrement={(row) => increment(P3, row)}
+          onDecrement={(row) => decrement(P3, row)}
+        />
+      </div>
+      
     </body>
   )
 }
