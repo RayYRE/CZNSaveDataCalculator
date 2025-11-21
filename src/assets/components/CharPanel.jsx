@@ -11,6 +11,10 @@ export default function CharPanel({values, current_tier, onIncrement, onDecremen
   const MCARDS = 8
   const MDIV = 9
   
+  var costs = [copyCalc(values[COPY]), copyCalc(values[REMOVE]), remBasic(values[REMBASIC]), 
+    values[CONVERT] * 10, values[NCARDS] * 20, values[NEPI] * 10, 
+    values[NDIV] * 30, values[SCARDS] * 20, values[MCARDS] * 80, values[MDIV] * 20]
+
   function limitCalc(){
     return current_tier * 10 + 20;
   }
@@ -19,7 +23,7 @@ export default function CharPanel({values, current_tier, onIncrement, onDecremen
     var current_save = 0;
 
     for (let i = 0; i < 10; i++){
-      current_save += values[i];
+      current_save += costs[i];
     }
     return current_save;
   }
